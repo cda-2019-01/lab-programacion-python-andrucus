@@ -10,3 +10,35 @@
 ## f,110
 ## g,35
 ##
+#Punto q12
+file = open('data.csv','r').readlines()
+file = [row[0:-1] for row in file]
+file = [row.split('\t') for row in file]
+
+data =[]
+i = 0
+
+for registro in file:
+    data.append([])
+    for e in registro:
+        a = e.split(',')
+        if (len(a) == 1):
+            data[i].append(a[0])
+        else:
+            data[i].append(a)
+    i +=1
+    
+
+result = {}
+
+for element in data:
+	for key in element[3]:
+		if key in result:
+			result[key] += int(element[1])
+		else:
+			result[key] = int(element[1])
+
+# print result
+
+for key in sorted(result.keys()):
+     print(key + ',' + str(result[key]))          

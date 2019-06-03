@@ -16,3 +16,19 @@
 ##    ('9', ['A', 'B', 'E', 'C'])
 ##
 ##
+#Punto q07
+file = open('data.csv','r').readlines()
+file = [row[0:-1] for row in file]
+file = [row.split('\t') for row in file]
+data =file
+
+resultado = {}
+
+for elemento in data:
+    resultado[elemento[1]] = []
+
+for elemento in data:
+    resultado[elemento[1]].append(elemento[0])
+
+for i in sorted(resultado.items()):
+    print(i)

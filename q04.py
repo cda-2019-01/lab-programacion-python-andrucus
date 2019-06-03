@@ -14,3 +14,19 @@
 ## 11,2
 ## 12,3
 ##
+#Punto q04
+file = open('data.csv','r').readlines()
+file = [row[0:-1] for row in file]
+file = [row.split('\t') for row in file]
+data =file
+
+resultado ={}
+
+for registro in data:
+    resultado[registro[2].split('-')[1]]=0
+ 
+for registro in data:
+    resultado[registro[2].split('-')[1]]= resultado[registro[2].split('-')[1]] + 1
+    
+for key in sorted(resultado):
+    print(key + ',' + str(resultado[key]))
